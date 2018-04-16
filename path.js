@@ -108,13 +108,13 @@ g.addNode('r2-b1-03', {
 });
 g.addNode('r2-b1-04', {
 	holes:0,
-	semaphore:0,
+	semaphore:1,
 	x: 8,
 	y:1
 });
 g.addNode('r2-b1-05', {
 	holes:0,
-	semaphore:0,
+	semaphore:1,
 	x: 10,
 	y:1
 });
@@ -226,19 +226,19 @@ g.addNode('r3-b1-01', {
 });
 g.addNode('r3-b1-02', {
 	holes:0,
-	semaphore:0,
+	semaphore:1,
 	x: 4,
 	y:3
 });
 g.addNode('r3-b1-03', {
 	holes:0,
-	semaphore:0,
+	semaphore:1,
 	x: 6,
 	y:3
 });
 g.addNode('r3-b1-04', {
 	holes:0,
-	semaphore:0,
+	semaphore:1,
 	x: 8,
 	y:3
 });
@@ -255,7 +255,7 @@ g.addNode('r3-b1-06', {
 	y:3
 });
 g.addNode('r3-b1-07', {
-	holes:1,
+	holes:0,
 	semaphore:0,
 	x: 14,
 	y:3
@@ -1298,18 +1298,23 @@ let pathFinder = path.aStar(g, {
 		//distance = Math.round(distance);
 		//console.log("DISTANCE -->"+distance);
 		//console.log(arredondado);
+		// console.log("link -->",link);
 		return arredondado;
 	},
-	heuristic(from, to, link){
+	heuristic(from, to){
 		let holes = from.data.holes - to.data.holes;
 		let semaphore = from.data.semaphore - to.data.semaphore;
 		let general = (holes + semaphore)/2;
-		//console.log("HOLES -->"+holes);
-		return holes;
+		// console.log("\n------------------");
+		// console.log("holes -->"+holes);
+		// console.log("semaphore -->"+semaphore);
+		// console.log("general -->"+general);
+		// console.log("\n------------------");
+		return general;
 	}
 });
 
-let foundPath = pathFinder.find('r1-b1', 'r8-b4');
+let foundPath = pathFinder.find('r1-b1', 'r3-b1-03');
 console.log(foundPath);
 console.log("\n\nTotal Distance\n+---+"+arredondado+"+---+");
 

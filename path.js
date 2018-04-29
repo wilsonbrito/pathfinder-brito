@@ -89,13 +89,13 @@ g.addNode('r8-b4', {
 
 /*Rua2*/
 g.addNode('r2-b1-01', {
-	holes:1,
+	holes:3,
 	semaphore:0,
 	x: 2,
 	y:1
 });
 g.addNode('r2-b1-02', {
-	holes:1,
+	holes:0,
 	semaphore:0,
 	x: 4,
 	y:1
@@ -108,13 +108,13 @@ g.addNode('r2-b1-03', {
 });
 g.addNode('r2-b1-04', {
 	holes:0,
-	semaphore:1,
+	semaphore:0,
 	x: 8,
 	y:1
 });
 g.addNode('r2-b1-05', {
 	holes:0,
-	semaphore:1,
+	semaphore:0,
 	x: 10,
 	y:1
 });
@@ -219,31 +219,31 @@ g.addNode('r2-b2-10', {
 
 /*Rua3*/
 g.addNode('r3-b1-01', {
-	holes:1,
+	holes:0,
 	semaphore:0,
 	x: 2,
 	y:3
 });
 g.addNode('r3-b1-02', {
 	holes:0,
-	semaphore:1,
+	semaphore:0,
 	x: 4,
 	y:3
 });
 g.addNode('r3-b1-03', {
 	holes:0,
-	semaphore:1,
+	semaphore:0,
 	x: 6,
 	y:3
 });
 g.addNode('r3-b1-04', {
 	holes:0,
-	semaphore:1,
+	semaphore:0,
 	x: 8,
 	y:3
 });
 g.addNode('r3-b1-05', {
-	holes:1,
+	holes:0,
 	semaphore:0,
 	x: 10,
 	y:3
@@ -1285,38 +1285,34 @@ g.addLink('r6-b2-09', 'r6-b2-10',{
 	y:9
 });
 
+/*Distance*/
 let totaldistance = 0;
-let distance = 0;
 let arredondado = 0;
+
+/*heuristic*/
+let holes = 0;
+let semaphore = 0;
+
 let pathFinder = path.aStar(g, {
 	distance(from, to, link){
 		let dx = from.data.x - to.data.x;
 	 	let dy = from.data.y - to.data.y;
-		distance = Math.sqrt(dx * dx + dy * dy);
-		arredondado = parseFloat(distance.toFixed(2));
+		let distance = Math.sqrt(dx * dx + dy * dy);
+		arredondado = parseFloat(distance.toFixed(3));
 		totaldistance += arredondado;
-		//distance = Math.round(distance);
-		//console.log("DISTANCE -->"+distance);
-		//console.log(arredondado);
-		// console.log("link -->",link);
-		return arredondado;
+		return totaldistance;
 	},
 	heuristic(from, to){
 		let holes = from.data.holes - to.data.holes;
 		let semaphore = from.data.semaphore - to.data.semaphore;
-		let general = (holes + semaphore)/2;
-		// console.log("\n------------------");
-		// console.log("holes -->"+holes);
-		// console.log("semaphore -->"+semaphore);
-		// console.log("general -->"+general);
-		// console.log("\n------------------");
-		return general;
+		return Math.sqrt(holes * holes + semaphore * semaphore);
 	}
 });
 
-let foundPath = pathFinder.find('r1-b1', 'r3-b1-03');
+let foundPath = pathFinder.find('r1-b1', 'r7-b1');
 console.log(foundPath);
-console.log("\n\nTotal Distance\n+---+"+arredondado+"+---+");
+console.log("\n\nTotal Distance\n+---+"+totaldistance+"+---+");
+
 
 
 /* Pra trazer dinamico:

@@ -89,7 +89,7 @@ g.addNode('r8-b4', {
 
 /*Rua2*/
 g.addNode('r2-b1-01', {
-	holes:3,
+	holes:1,
 	semaphore:0,
 	x: 2,
 	y:1
@@ -1292,6 +1292,7 @@ let arredondado = 0;
 /*heuristic*/
 let holes = 0;
 let semaphore = 0;
+let teste=0;
 
 let pathFinder = path.aStar(g, {
 	distance(from, to, link){
@@ -1305,26 +1306,14 @@ let pathFinder = path.aStar(g, {
 	heuristic(from, to){
 		let holes = from.data.holes - to.data.holes;
 		let semaphore = from.data.semaphore - to.data.semaphore;
-		return Math.sqrt(holes * holes + semaphore * semaphore);
+		teste += Math.sqrt(holes * holes + semaphore * semaphore);
+		return teste;
 	}
 });
 
 let foundPath = pathFinder.find('r1-b1', 'r7-b1');
+console.log("--------------------------------------------------------------------------------");
 console.log(foundPath);
-console.log("\n\nTotal Distance\n+---+"+totaldistance+"+---+");
-
-
-
-/* Pra trazer dinamico:
-https://wiki.openstreetmap.org/wiki/API_v0.6
-Retrieving map data by bounding box: GET /api/0.6/map
-
-GET /api/0.6/map?bbox=left,bottom,right,top
-GET /api/0.6/map?bbox=-49.96242,-49.96399,-49.96190,-22.15893
-https://api.openstreetmap.org/api/0.6/map?bbox=-49.96242,-49.96399,-49.96190,-22.15893
-
-left is the longitude of the left (westernmost) side of the bounding box.
-bottom is the latitude of the bottom (southernmost) side of the bounding box.
-right is the longitude of the right (easternmost) side of the bounding box.
-top is the latitude of the top (northernmost) side of the bounding box.
-*/
+console.log("--------------------------------------------------------------------------------");
+console.log("\n\n\nTotal Distance   ----------------------------------->      "+totaldistance+"\n\n");
+console.log("\n\n\nTotal Heuristic   ----------------------------------->      "+teste+"\n\n");

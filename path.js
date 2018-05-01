@@ -219,13 +219,13 @@ g.addNode('r2-b2-10', {
 
 /*Rua3*/
 g.addNode('r3-b1-01', {
-	holes:0,
+	holes:1,
 	semaphore:0,
 	x: 2,
 	y:3
 });
 g.addNode('r3-b1-02', {
-	holes:0,
+	holes:1,
 	semaphore:0,
 	x: 4,
 	y:3
@@ -1301,13 +1301,12 @@ let pathFinder = path.aStar(g, {
 		let distance = Math.sqrt(dx * dx + dy * dy);
 		arredondado = parseFloat(distance.toFixed(3));
 		totaldistance += arredondado;
-		return totaldistance;
+		return arredondado;
 	},
 	heuristic(from, to){
 		let holes = from.data.holes - to.data.holes;
 		let semaphore = from.data.semaphore - to.data.semaphore;
-		teste += Math.sqrt(holes * holes + semaphore * semaphore);
-		return teste;
+		return Math.sqrt(holes * holes + semaphore * semaphore);
 	}
 });
 

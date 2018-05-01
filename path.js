@@ -96,13 +96,13 @@ g.addNode('r2-b1-01', {
 });
 g.addNode('r2-b1-02', {
 	holes:0,
-	semaphore:0,
+	semaphore:1,
 	x: 4,
 	y:1
 });
 g.addNode('r2-b1-03', {
 	holes:0,
-	semaphore:0,
+	semaphore:1,
 	x: 6,
 	y:1
 });

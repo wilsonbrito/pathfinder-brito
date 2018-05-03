@@ -89,20 +89,20 @@ g.addNode('r8-b4', {
 
 /*Rua2*/
 g.addNode('r2-b1-01', {
-	holes:1,
+	holes:0,
 	semaphore:0,
 	x: 2,
 	y:1
 });
 g.addNode('r2-b1-02', {
 	holes:0,
-	semaphore:1,
+	semaphore:0,
 	x: 4,
 	y:1
 });
 g.addNode('r2-b1-03', {
 	holes:0,
-	semaphore:1,
+	semaphore:0,
 	x: 6,
 	y:1
 });
@@ -219,13 +219,13 @@ g.addNode('r2-b2-10', {
 
 /*Rua3*/
 g.addNode('r3-b1-01', {
-	holes:1,
+	holes:0,
 	semaphore:0,
 	x: 2,
 	y:3
 });
 g.addNode('r3-b1-02', {
-	holes:1,
+	holes:0,
 	semaphore:0,
 	x: 4,
 	y:3
@@ -1315,4 +1315,3 @@ console.log("-------------------------------------------------------------------
 console.log(foundPath);
 console.log("--------------------------------------------------------------------------------");
 console.log("\n\n\nTotal Distance   ----------------------------------->      "+totaldistance+"\n\n");
-console.log("\n\n\nTotal Heuristic   ----------------------------------->      "+teste+"\n\n");

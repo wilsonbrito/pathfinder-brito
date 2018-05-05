@@ -13,43 +13,41 @@
     <title>Map</title>
   </head>
   <body>
-    <img src="leaflet/images/mini-car.png">
     <div id="mapid">
     </div>
     <script src="bundle.js"></script>
     <script type="text/javascript">
 
-    //criando icone para colocar no mapa
-    var carro = L.icon({
-      iconUrl: 'leaflet/images/mini-car.png',
-      iconSize:     [23, 21], // tamanho do icone
-      iconAnchor:   [23, 21], // ponto onde irá indexar a localização de acordo com a imagem
-      popupAnchor:  [-23, -26] // local onde irá subir a popup
-    });
-    var emergencia = L.icon({
-      iconUrl: 'leaflet/images/mini-car.png',
-      iconSize:     [23, 21], // tamanho do icone
-      iconAnchor:   [23, 21], // ponto onde irá indexar a localização de acordo com a imagem
-      popupAnchor:  [-23, -26] // local onde irá subir a popup
-    });
-
-
+      //criando icone para colocar no mapa
+      var carro = L.icon({
+        iconUrl: 'leaflet/images/mini-car.png',
+        iconSize:     [23, 21], // tamanho do icone
+        iconAnchor:   [23, 21], // ponto onde irá indexar a localização de acordo com a imagem
+        popupAnchor:  [-23, -26] // local onde irá subir a popup
+      });
+      var emergencia = L.icon({
+        iconUrl: 'leaflet/images/emergencia2.png',
+        iconSize:     [23, 21], // tamanho do icone
+        iconAnchor:   [23, 21], // ponto onde irá indexar a localização de acordo com a imagem
+        popupAnchor:  [-23, -21] // local onde irá subir a popup
+      });
+    
       const ACCESS_TOKEN = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
       var mymap = L.map('mapid').setView([-22.200359, -49.949818], 19);
 
       //adiciona a localização do ponto.
-      let inicio = L.marker([-22.199261, -49.948123], {icon:carro}).addTo(mymap);
-      let fim = L.marker([-22.201288, -49.9508]).addTo(mymap);
+      let inicio = L.marker([-22.199276, -49.948096], {icon:carro}).addTo(mymap);
+      let fim = L.marker([-22.201536, -49.950559], {icon:emergencia}).addTo(mymap);
 
       inicio.bindPopup("<b>Ponto de Início</b><br>Ponto onde está localizado o carro.").openPopup();
       fim.bindPopup("<b>Ponto Final</b><br>Ponto onde o carro deseja chegar.").openPopup();
       //adiciona o circle de acordo com a localização que for inserida
-      var circle = L.circle([-22.199261, -49.948123], {
-          color: 'red',
-          fillColor: '#f03',
-          fillOpacity: 0.5,
-          radius: 10
-      }).addTo(mymap);
+      // var circle = L.circle([-22.199261, -49.948123], {
+      //     color: 'red',
+      //     fillColor: '#f03',
+      //     fillOpacity: 0.5,
+      //     radius: 10
+      // }).addTo(mymap);
 
       //Reporta um polygon de acordo com as codernadas
       // var polygon = L.polygon([
@@ -61,7 +59,6 @@
 
       //Onde clica reporta a geolocalização
       var popup = L.popup();
-
       function onMapClick(e) {
         popup
         .setLatLng(e.latlng)

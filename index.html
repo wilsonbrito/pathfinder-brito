@@ -9,37 +9,61 @@
    integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
    crossorigin=""></script>
    <style media="screen">
-     #mapid { height: 500px; }
+     #mapid {
+       height: 900px;
+     }
    </style>
     <meta charset="utf-8">
     <title>Map</title>
   </head>
   <body>
     <div id="mapid">
-
     </div>
     <script src="bundle.js"></script>
     <script type="text/javascript">
       const ACCESS_TOKEN = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-      var mymap = L.map('mapid').setView([-22.156485, -49.961582], 13);
-      let casa = L.marker([-22.156485, -49.961582]).addTo(mymap);
-      var polygon = L.polygon([
-        [-22.156485, -49.961582],
-        [-22.156485, -49.98],
-        [-22.156485, -49.961582]
-      ]).addTo(mymap);
-      var circle = L.circle([-22.156485, -49.961582], {
+      var mymap = L.map('mapid').setView([-22.200359, -49.949818], 19);
+
+      //adiciona a localização do ponto.
+      let inicio = L.marker([-22.199261, -49.948123]).addTo(mymap);
+      let fim = L.marker([-22.201288, -49.9508]).addTo(mymap);
+
+      inicio.bindPopup("<b>Ponto de Início</b><br>Ponto onde está localizado o carro.").openPopup();
+      fim.bindPopup("<b>Ponto Final</b><br>Ponto onde o carro deseja chegar.").openPopup();
+      //adiciona o circle de acordo com a localização que for inserida
+      var circle = L.circle([-22.199261, -49.948123], {
           color: 'red',
           fillColor: '#f03',
           fillOpacity: 0.5,
-          radius: 500
+          radius: 50
       }).addTo(mymap);
+
+      //Reporta um polygon de acordo com as codernadas
+      // var polygon = L.polygon([
+      //   [-22.20016, -49.94844],
+      //   [-22.200314, -49.948595],
+      //   [-22.200528, -49.948869],
+      //   [-22.20086, -49.948751]
+      // ]).addTo(mymap);
+
+      //Onde clica reporta a geolocalização
+      var popup = L.popup();
+
+      function onMapClick(e) {
+        popup
+        .setLatLng(e.latlng)
+        .setContent("Você clicou na posição " + e.latlng.toString())
+        .openOn(mymap);
+      }
+      mymap.on('click', onMapClick);
+
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
           attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
           maxZoom: 18,
           id: 'mapbox.streets',
           accessToken: ACCESS_TOKEN
       }).addTo(mymap);
+
     </script>
   </body>
 </html>

@@ -1317,16 +1317,16 @@ console.log("-------------------------------------------------------------------
 console.log("\n\n\nTotal Distance   ----------------------------------->"+totaldistance+"\n\n");
 
 
-document.body.onload = createHtml;
-
-function createHtml () {
-  // cria um novo elemento div
-  // e dá à ele conteúdo
-  var divNova = document.createElement("div");
-  var conteudoNovo = document.createTextNode("Frase Teste");
-  divNova.appendChild(conteudoNovo); //adiciona o nó de texto à nova div criada
-
-  // adiciona o novo elemento criado e seu conteúdo ao DOM
-  var divAtual = document.getElementById("div1");
-  document.body.insertBefore(divNova, divAtual);
-}
+// document.body.onload = createHtml;
+//
+// function createHtml () {
+//   // cria um novo elemento div
+//   // e dá à ele conteúdo
+//   var divNova = document.createElement("div");
+//   var conteudoNovo = document.createTextNode("Frase teste pelo path.js");
+//   divNova.appendChild(conteudoNovo); //adiciona o nó de texto à nova div criada
+//
+//   // adiciona o novo elemento criado e seu conteúdo ao DOM
+//   var divAtual = document.getElementById("div1");
+//   document.body.insertBefore(divNova, divAtual);
+// }

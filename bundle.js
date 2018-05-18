@@ -1729,6 +1729,24 @@ let createGraph = require('ngraph.graph');
 let g = createGraph();
 let path = require('ngraph.path');
 
+g.addNode('Rua Henrique Dias',{
+	holes:0,
+	semaphore:0,
+	x:-22.203016,
+	y:-49.949346
+});
+
+g.addNode('Rua Almirante Barroso',{
+	holes:0,
+	semaphore:0,
+	x:-22.203528,
+	y:-49.95014
+});
+
+g.addLink('Rua Henrique Dias', 'Rua Almirante Barroso',{
+	x:-22.202976,
+	y:-49.9494
+});
 /*Rua1*/
 g.addNode('r1-b1', {
 	holes:0,
@@ -1816,7 +1834,7 @@ g.addNode('r8-b4', {
 
 /*Rua2*/
 g.addNode('r2-b1-01', {
-	holes:0,
+	holes:1,
 	semaphore:0,
 	x: 2,
 	y:1
@@ -1946,7 +1964,7 @@ g.addNode('r2-b2-10', {
 
 /*Rua3*/
 g.addNode('r3-b1-01', {
-	holes:0,
+	holes:1,
 	semaphore:0,
 	x: 2,
 	y:3
@@ -3042,20 +3060,5 @@ console.log("-------------------------------------------------------------------
 console.log(foundPath);
 console.log("--------------------------------------------------------------------------------");
 console.log("\n\n\nTotal Distance   ----------------------------------->"+totaldistance+"\n\n");
-
-
-// document.body.onload = createHtml;
-//
-// function createHtml () {
-//   // cria um novo elemento div
-//   // e dá à ele conteúdo
-//   var divNova = document.createElement("div");
-//   var conteudoNovo = document.createTextNode("Frase teste pelo path.js");
-//   divNova.appendChild(conteudoNovo); //adiciona o nó de texto à nova div criada
-//
-//   // adiciona o novo elemento criado e seu conteúdo ao DOM
-//   var divAtual = document.getElementById("div1");
-//   document.body.insertBefore(divNova, divAtual);
-// }
 
 },{"ngraph.graph":2,"ngraph.path":11}]},{},[12]);

@@ -1,6 +1,6 @@
 var fs = require('fs');
 var parse = require('xml-parser');
-fs.readFile('map.osm', 'utf8', function(err, xml){
+fs.readFile('marilia-pequena.osm', 'utf8', function(err, xml){
   var inspect = require('util').inspect;
 
   var obj = parse(xml);
@@ -12,23 +12,23 @@ fs.readFile('map.osm', 'utf8', function(err, xml){
   //console.log(obj.root.children.length)
 
   for(let i = 0; i <= obj.root.children.length; i++){
-  //   // g.addnod(
-  //   //   obj,name,
-  //   //   obj,numero
-  //   // )
-  //   // }
-  
-    console.log(obj.root.children[i].attributes);
+
+    var node = obj.root.children[i];
+    if(node && node.name && node.name === 'way'){
+      console.log('WAY')
+      for(var tags = 0; tags <= node.children.length; tags++){
+        var n = node.children[tags];
+        
+        var quarteiroes = [];
+        if(n && n.name && n.name === 'nd'){
+          quarteiroes.push(n.attributes.ref);
+        };
+
+        if(n && n.name && n.name === 'tag'){
+          console.log('rua', n.attributes);
+        };
+      }
+    }
+    //console.log(obj.root.children[i].attributes);
   }
-  // var cloneAndPluck = function(sourceObject, keys) {
-  //     var newObject = {};
-  //     keys.forEach(function(key) { newObject[key] = sourceObject[key]; });
-  //     return newObject;
-  // };
-  //
-  // var subset = cloneAndPluck(obj, ["lat", "lon"]);
-  //
-  // console.log(subset);
-  //
-  // //https://stackoverflow.com/questions/17781472/how-to-get-a-subset-of-a-javascript-objects-properties
 });

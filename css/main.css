@@ -1,0 +1,25 @@
+.cidade {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.cidade .quarteirao,
+.cidade .rua-casa {
+  flex: 0 0 auto;
+}
+.cidade .quarteirao .link,
+.cidade .rua-casa .link {
+  transform: rotate(90deg);
+margin-right
+}
+.cidade .quarteirao .rua,
+.cidade .rua-casa .rua,
+.cidade .quarteirao .local,
+.cidade .rua-casa .local {
+  display: block;
+}
+.cidade .quarteirao .ico,
+.cidade .rua-casa .ico {
+  height: 60px;
+  width: 60px;
+}

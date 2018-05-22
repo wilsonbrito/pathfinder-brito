@@ -89,7 +89,7 @@ g.addNode('r8-b4', {
 
 /*Rua2*/
 g.addNode('r2-b1-01', {
-	holes:1,
+	holes:2,
 	semaphore:0,
 	x: 2,
 	y:1
@@ -148,9 +148,6 @@ g.addNode('r2-b1-10', {
 	x: 20,
 	y:1
 });
-
-
-
 
 /*Rua2-Bloco2*/
 g.addNode('r2-b2-01', {
@@ -1126,7 +1123,6 @@ g.addLink('r2-b2-09', 'r2-b2-10',{
 });
 
 
-
 /*Links da rua 3 - Bloco 2*/
 g.addLink('r3-b2-01', 'r3-b2-02',{
 	x:23,
@@ -1292,7 +1288,7 @@ let arredondado = 0;
 /*heuristic*/
 let holes = 0;
 let semaphore = 0;
-let teste=0;
+let result=0;
 
 let pathFinder = path.aStar(g, {
 	distance(from, to, link){
@@ -1306,15 +1302,20 @@ let pathFinder = path.aStar(g, {
 	heuristic(from, to){
 		let holes = from.data.holes - to.data.holes;
 		let semaphore = from.data.semaphore - to.data.semaphore;
-		teste += Math.sqrt(holes * holes + semaphore * semaphore);
-		return teste;
+		result += Math.sqrt(holes * holes + semaphore * semaphore);
+		return result;
 	}
 });
 
 let foundPath = pathFinder.find('r1-b1', 'r7-b1');
 
-console.log(teste);
 // console.log("--------------------------------------------------------------------------------");
-// console.log(foundPath);
+//console.log(foundPath);
 // console.log("--------------------------------------------------------------------------------");
 //console.log("\n\n\nTotal Distance   ----------------------------------->"+totaldistance+"\n\n");
+foundPath.forEach(function(node){
+	console.log(node)
+	var nodeSelector = node.id;
+	console.log('.' + nodeSelector + " .ico");
+	document.querySelector( '.' + nodeSelector + " .ico").setAttribute('fill', 'green')
+});

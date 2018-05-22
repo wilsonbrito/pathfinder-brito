@@ -1729,24 +1729,6 @@ let createGraph = require('ngraph.graph');
 let g = createGraph();
 let path = require('ngraph.path');
 
-g.addNode('Rua Henrique Dias',{
-	holes:0,
-	semaphore:0,
-	x:-22.203016,
-	y:-49.949346
-});
-
-g.addNode('Rua Almirante Barroso',{
-	holes:0,
-	semaphore:0,
-	x:-22.203528,
-	y:-49.95014
-});
-
-g.addLink('Rua Henrique Dias', 'Rua Almirante Barroso',{
-	x:-22.202976,
-	y:-49.9494
-});
 /*Rua1*/
 g.addNode('r1-b1', {
 	holes:0,
@@ -1834,7 +1816,7 @@ g.addNode('r8-b4', {
 
 /*Rua2*/
 g.addNode('r2-b1-01', {
-	holes:1,
+	holes:2,
 	semaphore:0,
 	x: 2,
 	y:1
@@ -1893,9 +1875,6 @@ g.addNode('r2-b1-10', {
 	x: 20,
 	y:1
 });
-
-
-
 
 /*Rua2-Bloco2*/
 g.addNode('r2-b2-01', {
@@ -1964,7 +1943,7 @@ g.addNode('r2-b2-10', {
 
 /*Rua3*/
 g.addNode('r3-b1-01', {
-	holes:1,
+	holes:0,
 	semaphore:0,
 	x: 2,
 	y:3
@@ -2871,7 +2850,6 @@ g.addLink('r2-b2-09', 'r2-b2-10',{
 });
 
 
-
 /*Links da rua 3 - Bloco 2*/
 g.addLink('r3-b2-01', 'r3-b2-02',{
 	x:23,
@@ -3037,7 +3015,7 @@ let arredondado = 0;
 /*heuristic*/
 let holes = 0;
 let semaphore = 0;
-let teste=0;
+let result=0;
 
 let pathFinder = path.aStar(g, {
 	distance(from, to, link){
@@ -3051,14 +3029,21 @@ let pathFinder = path.aStar(g, {
 	heuristic(from, to){
 		let holes = from.data.holes - to.data.holes;
 		let semaphore = from.data.semaphore - to.data.semaphore;
-		return Math.sqrt(holes * holes + semaphore * semaphore);
+		result += Math.sqrt(holes * holes + semaphore * semaphore);
+		return result;
 	}
 });
 
 let foundPath = pathFinder.find('r1-b1', 'r7-b1');
-console.log("--------------------------------------------------------------------------------");
-console.log(foundPath);
-console.log("--------------------------------------------------------------------------------");
-console.log("\n\n\nTotal Distance   ----------------------------------->"+totaldistance+"\n\n");
 
+// console.log("--------------------------------------------------------------------------------");
+//console.log(foundPath);
+// console.log("--------------------------------------------------------------------------------");
+//console.log("\n\n\nTotal Distance   ----------------------------------->"+totaldistance+"\n\n");
+foundPath.forEach(function(node){
+	console.log(node)
+	var nodeSelector = node.id;
+	console.log('.' + nodeSelector + " .ico");
+	document.querySelector( '.' + nodeSelector + " .ico").setAttribute('fill', 'green')
+});
 },{"ngraph.graph":2,"ngraph.path":11}]},{},[12]);

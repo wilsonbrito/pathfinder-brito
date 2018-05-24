@@ -1816,7 +1816,7 @@ g.addNode('r8-b4', {
 
 /*Rua2*/
 g.addNode('r2-b1-01', {
-	holes:2,
+	holes:1,
 	semaphore:0,
 	x: 2,
 	y:1
@@ -3015,7 +3015,7 @@ let arredondado = 0;
 /*heuristic*/
 let holes = 0;
 let semaphore = 0;
-let result=0;
+let result = 0;
 
 let pathFinder = path.aStar(g, {
 	distance(from, to, link){
@@ -3026,24 +3026,26 @@ let pathFinder = path.aStar(g, {
 		totaldistance += arredondado;
 		return arredondado;
 	},
-	heuristic(from, to){
+	heuristic(from, to, link){
 		let holes = from.data.holes - to.data.holes;
 		let semaphore = from.data.semaphore - to.data.semaphore;
-		result += Math.sqrt(holes * holes + semaphore * semaphore);
-		return result;
+		let calc = Math.sqrt(holes * holes + semaphore * semaphore);
+		result = parseFloat(calc.toFixed(1));
+		return result
 	}
 });
 
 let foundPath = pathFinder.find('r1-b1', 'r7-b1');
 
 // console.log("--------------------------------------------------------------------------------");
-//console.log(foundPath);
+// console.log(foundPath);
 // console.log("--------------------------------------------------------------------------------");
 //console.log("\n\n\nTotal Distance   ----------------------------------->"+totaldistance+"\n\n");
 foundPath.forEach(function(node){
-	console.log(node)
+	console.log("Node"+node)
 	var nodeSelector = node.id;
 	console.log('.' + nodeSelector + " .ico");
+	//console.log("Resultado"+result);
 	document.querySelector( '.' + nodeSelector + " .ico").setAttribute('fill', 'green')
 });
 },{"ngraph.graph":2,"ngraph.path":11}]},{},[12]);

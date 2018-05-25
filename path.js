@@ -216,7 +216,7 @@ g.addNode('r2-b2-10', {
 
 /*Rua3*/
 g.addNode('r3-b1-01', {
-	holes:0,
+	holes:2,
 	semaphore:0,
 	x: 2,
 	y:3

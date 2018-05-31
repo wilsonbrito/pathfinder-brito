@@ -24,5 +24,99 @@ margin-right
   width: 60px;
 }
 .cidade .conexao .ico {
-  fill: #f00;
+  fill: #c81400;
+}
+body.index {
+  background: #d9d9d9;
+}
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.background:after {
+  content: '';
+  position: absolute;
+  display: block;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 700px 700px;
+  border-color: transparent transparent #c81400 transparent;
+  z-index: 1;
+}
+.box {
+  width: 1360px;
+  height: 768px;
+  background: rgba(255,255,255,0.7);
+  z-index: 2;
+  box-shadow: 1px 22px 10px 4px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+}
+.route {
+  height: 100%;
+  flex: 0 0 230px;
+}
+.route .car,
+.route .road {
+  height: 200px;
+  width: 200px;
+  margin-left: 30px;
+}
+.route:hover {
+  transform: translateY(20px);
+}
+.apresenta {
+  flex: 1 1 100%;
+  padding: 30px 30px;
+}
+.apresenta .title {
+  font-family: 'Bowlby One SC', cursive;
+  color: #767272;
+  font-size: 80px;
+  text-align: center;
+}
+.apresenta .name-wilson {
+  display: flex;
+  align-items: center;
+  margin-top: 100px;
+}
+.apresenta .name-wilson .name {
+  order: 2;
+  font-family: 'Quicksand', sans-serif;
+  color: #767272;
+  font-size: 40px;
+  margin-left: 30px;
+}
+.apresenta .name-wilson .wilson {
+  order: 1;
+  border: 1px solid rgba(0,0,0,0.1);
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+.apresenta .name-wilson .wilson img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 30px;
+}
+.menu a {
+  font-size: 20px;
+  font-family: 'Bowlby One SC', cursive;
+  color: #767272;
+  text-decoration: none;
 }

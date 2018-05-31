@@ -3048,4 +3048,5 @@ foundPath.forEach(function(node){
 	//console.log("Resultado"+result);
 	document.querySelector( '.' + nodeSelector + " .ico").setAttribute('fill', 'green')
 });
+
 },{"ngraph.graph":2,"ngraph.path":11}]},{},[12]);

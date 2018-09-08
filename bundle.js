@@ -1817,7 +1817,7 @@ g.addNode('r8-b4', {
 /*Rua2*/
 g.addNode('r2-b1-01', {
 	holes: 1,
-	semaphore: 1,
+	semaphore: 0,
 	x: 2,
 	y: 1
 });
@@ -1876,7 +1876,7 @@ g.addNode('r2-b1-10', {
 	y: 1
 });
 
-/*Rua2-Bloco2*/
+/*Rua2-Parte1*/
 g.addNode('r2-b2-01', {
 	holes: 0,
 	semaphore: 0,
@@ -1941,9 +1941,9 @@ g.addNode('r2-b2-10', {
 
 
 
-/*Rua3*/
+/*Rua3-Parte2*/
 g.addNode('r3-b1-01', {
-	holes: 1,
+	holes: 0,
 	semaphore: 0,
 	x: 2,
 	y: 3
@@ -3059,5 +3059,5 @@ document.getElementById('botao').addEventListener('click', () => {
 // console.log("--------------------------------------------------------------------------------");
 // console.log(foundPath);
 // console.log("--------------------------------------------------------------------------------");
-//console.log("\n\n\nTotal Distance   ----------------------------------->"+totaldistance+"\n\n");
+//console.log("\n\n\nTotal Distance   ----------------------------------->"+totaldistance+"\n\n");material i
 },{"ngraph.graph":2,"ngraph.path":11}]},{},[12]);
